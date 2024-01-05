@@ -9,3 +9,4 @@ if __name__ == "__main__":
         result += int(argv[i])
 
     print("{:d}".format(result))
+
