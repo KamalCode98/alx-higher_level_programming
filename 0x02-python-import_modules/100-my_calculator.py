@@ -19,7 +19,7 @@ elif argv[2] == '/':
 else:
     print("Unknown operator. Available operators: +, -, * and /")
     exit(1)
-    
+
 result = func(int(argv[1]), int(argv[3]))
 print("{:d} {:s} {:d} = {:d}".format(int(argv[1]),
                                      argv[2], int(argv[3]), result))
