@@ -12,8 +12,8 @@ class Square:
         Constructor function
 
         Args:
-        param1 (self): instance
-        param2 (int): size of the square
+        par1 self: instance
+        par2 int: size of the square
 
         Returns:
         - None
