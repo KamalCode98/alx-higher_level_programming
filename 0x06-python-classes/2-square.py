@@ -1,14 +1,12 @@
 #!/usr/bin/python3
 """
-Class Square that defines a square
-
-    Raises:
-        TypeError: size must be an integer
-        ValueError: size must be >= 0
+A Square class that defines a square
 """
 
 
 class Square:
+    """Square with size"""
+
     def __init__(self, size=0) -> None:
         """
         Constructor function
