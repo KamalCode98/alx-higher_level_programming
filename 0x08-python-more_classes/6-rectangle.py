@@ -9,7 +9,8 @@ class Rectangle:
 
     Attributes:
         number_of_instances (int): Number of Rectangle instances,
-            increments with every instantiation, decrements with every deletion.
+            increments with every instantiation,
+            decrements with every deletion.
     """
 
     number_of_instances = 0
