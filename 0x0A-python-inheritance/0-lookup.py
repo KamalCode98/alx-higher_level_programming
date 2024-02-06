@@ -3,6 +3,7 @@
 Module for 0-lookup
 """
 
+
 def lookup(obj):
     """
     Returns a list object
