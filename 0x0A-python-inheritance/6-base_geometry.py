@@ -2,6 +2,8 @@
 """
 Module 6-base_geometry
 """
+
+
 class BaseGeometry:
     '''A BaseGeometry class.'''
     def area(self):
