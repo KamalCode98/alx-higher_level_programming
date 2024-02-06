@@ -1,167 +1,69 @@
-=======================
-How to Use 1-my_list.py
-=======================
-
-This module defines a class `MyList` that inherits from `list`.
-
-Instantiation
-=============
-
-`MyList` can be instantiated with no arguments, which will return
-an empty list:
-
-::
-
+Import function from module:
     >>> MyList = __import__('1-my_list').MyList
-    >>> my_list = MyList()
-    >>> type(my_list)
-    <class '1-my_list.MyList'>
 
-::
+Correct Class Type test:
+    >>> ml = MyList()
+    >>> type(ml) == MyList
+    True
 
-    >>> print(my_list)
-    []
+Correct Instance test:
+    >>> ml = MyList()
+    >>> isinstance(ml, list)
+    True
 
-Or a single argument, which must be an iterable object.
+print_sorted method is an instance method:
+    >>> type(MyList.__dict__['print_sorted'])
+    <class 'function'>
 
-::
-
-    >>> my_list = MyList([1, 2, 3])
-    >>> print(my_list)
-    [1, 2, 3]
-
-::
-
-    >>> my_list = MyList(None)
+print_sorted method called via class with no args:
+    >>> ml.__class__.print_sorted()
     Traceback (most recent call last):
-    TypeError: 'NoneType' object is not iterable
+    TypeError: print_sorted() missing 1 required positional argument: 'self'
 
-
-A `TypeError` will be raised for any more than one instantiation arguments.
-
-::
-
-    >>> my_list = MyList([1, 2], [3, 4])
-    Traceback (most recent call last):
-    TypeError: list() takes at most 1 argument (2 given)
-
-Usage
-=====
-
-`MyList` is an inherited `list` class, and thus features the same methods.
-For instance, elements can be added to a `MyList` with the `append()` method.
-
-::
-
-    >>> my_list = MyList()
-    >>> my_list.append(1)
-    >>> my_list.append(2)
-    >>> my_list.append(3)
-    >>> print(my_list)
-    [1, 2, 3]
-
-Replaced with indexing:
-
-::
-
-    >>> my_list[0] = 5
-    >>> print(my_list)
-    [5, 2, 3]
-
-And removed with the `remove()` method.
-
-::
-
-    >>> my_list.remove(5)
-    >>> print(my_list)
-    [2, 3]
-
-See the documentation on Python lists for more built-in methods.
-
-`print_sorted` Method
-=======================
-
-`MyList` implements a single method - a public instance method
-`print_sorted(self)`.
-
-::
-
-    >>> my_list = MyList()
-    >>> print(my_list.print_sorted)
-    <bound method MyList.print_sorted of []>
-
-The method takes no arguments - a TypeError will be raised if an argument is
-provided.
-
-::
-
-    >>> my_list.print_sorted(1)
+print_sorted method called with 1 arg:
+    >>> ml.print_sorted([4, 2, 5])
     Traceback (most recent call last):
     TypeError: print_sorted() takes 1 positional argument but 2 were given
 
-The method prints the list in ascending sorted order.
+print_sorted method called with 2 args:
+    >>> ml.print_sorted([4, 2, 5], 1)
+    Traceback (most recent call last):
+    TypeError: print_sorted() takes 1 positional argument but 3 were given
 
-::
-
-    >>> my_list.append(1)
-    >>> my_list.append(4)
-    >>> my_list.append(2)
-    >>> my_list.append(3)
-    >>> my_list.append(5)
-    >>> print(my_list)
-    [1, 4, 2, 3, 5]
-
-::
-
-    >>> my_list.print_sorted()
-    [1, 2, 3, 4, 5]
-
-The order of the original list is not altered after a call to the method.
-
-::
-
-    >>> print(my_list)
-    [1, 4, 2, 3, 5]
-
-Note that lists of strings are sorted lexographically.
-
-::
-
-    >>> my_list = MyList()
-    >>> my_list.append("Brennan")
-    >>> my_list.append("Poppy")
-    >>> my_list.append("School")
-    >>> my_list.append("Holberton")
-    >>> my_list.append("Betty")
-    >>> print(my_list)
-    ['Brennan', 'Poppy', 'School', 'Holberton', 'Betty']
-
-::
-
-    >>> my_list.print_sorted()
-    ['Betty', 'Brennan', 'Holberton', 'Poppy', 'School']
-
-Another friendly reminder that the original list is unaltered :)
-
-::
-
-    >>> print(my_list)
-    ['Brennan', 'Poppy', 'School', 'Holberton', 'Betty']
-
-Nothing to sort with empty lists.
-
-::
-
-    >>> my_list = MyList()
-    >>> my_list.print_sorted()
+Empty list test:
+    >>> ml = MyList()
+    >>> ml.print_sorted()
     []
 
-If `print_sorted(...)` is called on a list of different types, a TypeError
-will be raised.
+Normal list test:
+    >>> ml = MyList([2, 10, 1])
+    >>> ml.print_sorted()
+    [1, 2, 10]
 
-::
+Normal list test 2:
+    >>> ml = MyList([1, 4, 2, 3, 5])
+    >>> ml.print_sorted()
+    [1, 2, 3, 4, 5]
 
-    >>> my_list = MyList([1, "Betty", "Holberton", 5])
-    >>> my_list.print_sorted()
-    Traceback (most recent call last):
-    TypeError: unorderable types: str() < int()
+Negative ints list test:
+    >>> ml = MyList([-1000, -98, -232565, 0, -23423434, -123])
+    >>> ml.print_sorted()
+    [-23423434, -232565, -1000, -123, -98, 0]
+
+Original list unchanged:
+    >>> ml = MyList([2, 10, 1, -10, 20, 100, 0])
+    >>> ml.print_sorted()
+    [-10, 0, 1, 2, 10, 20, 100]
+    >>> ml
+    [2, 10, 1, -10, 20, 100, 0]
+
+List already in order:
+    >>> ml = MyList([-10, 0, 1, 2, 10, 20, 100])
+    >>> ml.print_sorted()
+    [-10, 0, 1, 2, 10, 20, 100]
+
+Test append:
+    >>> ml = MyList()
+    >>> ml.append(10)
+    >>> ml
+    [10]
