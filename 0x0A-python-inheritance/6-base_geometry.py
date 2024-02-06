@@ -2,12 +2,8 @@
 """
 Module 6-base_geometry
 """
-
-
 class BaseGeometry:
-    """
-    A base class for geometric shapes.
-    """
+    '''A BaseGeometry class.'''
     def area(self):
-        """Not implemented."""
-        raise Exception("area() is not implemented yet")
+        '''Method to compute this area.'''
+        raise Exception('area() is not implemented')
