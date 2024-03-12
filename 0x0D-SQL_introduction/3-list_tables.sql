@@ -1,3 +1,3 @@
 -- Script that shows the list tables
-
-SHOW TABLES FROM mysql;
+-- execute: cat 3-list_tables.sql | mysql -hlocalhost -uroot -p mysql
+SHOW TABLES;
