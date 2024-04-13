@@ -13,7 +13,7 @@ if __name__ == "__main__":
 
     # Execute the query
     cursor.execute("""SELECT * FROM states ORDER BY states.id ASC""")
-    
+
     # Fetch the results
     rows = cursor.fetchall()
 
