@@ -1,24 +1,32 @@
 #!/usr/bin/python3
-"""Script that takes in an argument,
-displays all values in the states table of hbtn_0e_0_usa
-where name matches the argument, using parameterized queries."""
+"""
+The script retrieves and displays a list of all cities
+stored in the 'hbtn_0e_4_usa' database, with comments added.
+"""
 
 if __name__ == "__main__":
 
     from sys import argv
-    import MySQLdb
+    import MySQLdb as mysql
 
-    db = MySQLdb.connect(user=argv[1], passwd=argv[2], db=argv[3])
-    c = db.cursor()
-    param = (argv[4], )
+    # Connect to the database
+    database = mysql.connect(user=argv[1], passwd=argv[2], db=argv[3])
+    
+    # Create a cursor object to execute SQL queries
+    cursor = database.cursor()
 
-    c.execute("SELECT * FROM states WHERE name = %s\
-            ORDER BY states.id ASC", param)
+    # Execute a SQL query to retrieve cities and their corresponding states
+    cursor.execute("SELECT cities.id, cities.name, states.name FROM cities\
+            INNER JOIN states ON cities.state_id = states.id\
+            ORDER BY cities.id ASC")
+    
+    # Fetch all the rows from the result set
+    result_set = cursor.fetchall()
 
-    rows = c.fetchall()
-
-    for row in rows:
+    # Print the retrieved rows
+    for row in result_set:
         print(row)
 
-    c.close()
-    db.close()
+    # Close the cursor and database connection
+    cursor.close()
+    database.close()
