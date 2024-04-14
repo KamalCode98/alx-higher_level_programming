@@ -35,9 +35,5 @@ if __name__ == "__main__":
     # Change the name of the state to "New Mexico"
     state.name = "New Mexico"
 
-    # Commit the change
     session.commit()
-
-    # Close the session
     session.close()
-
